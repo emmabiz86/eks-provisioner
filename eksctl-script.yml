@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Metadata:
+    Generator: "former2"
+Description: ""
+Resources:
+    EC2Instance:
+        Type: "AWS::EC2::Instance"
+        Properties:
+            ImageId: "ami-001089eb624938d9f"
+            InstanceType: "t2.micro"
+            KeyName: "lsblk"
+            AvailabilityZone: !Sub "${AWS::Region}c"
+            Tenancy: "default"
+            SubnetId: "subnet-d99a0b95"
+            EbsOptimized: false
+            SecurityGroupIds: 
+              - "sg-0dea5ab7f3958dcc3"
+            SourceDestCheck: true
+            BlockDeviceMappings: 
+              - 
+                DeviceName: "/dev/xvda"
+                Ebs: 
+                    Encrypted: false
+                    VolumeSize: 10
+                    SnapshotId: "snap-01278cf30e4db9372"
+                    VolumeType: "gp2"
+                    DeleteOnTermination: true
+            UserData: "I2Nsb3VkLWJvb3Rob29rCiMhL2Jpbi9iYXNoCnl1bSB1cGRhdGUgLXkKY3VybCAtbyBrdWJlY3RsIGh0dHBzOi8vYW1hem9uLWVrcy5zMy51cy13ZXN0LTIuYW1hem9uYXdzLmNvbS8xLjIxLjIvMjAyMS0wNy0wNS9iaW4vbGludXgvYW1kNjQva3ViZWN0bApjaG1vZCAreCAuL2t1YmVjdGwKbXYgLi9rdWJlY3RsIC91c3IvbG9jYWwvYmluIAoKCmN1cmwgLS1zaWxlbnQgLS1sb2NhdGlvbiAiaHR0cHM6Ly9naXRodWIuY29tL3dlYXZld29ya3MvZWtzY3RsL3JlbGVhc2VzL2xhdGVzdC9kb3dubG9hZC9la3NjdGxfJCh1bmFtZSAtcylfYW1kNjQudGFyLmd6IiB8IHRhciB4eiAtQyAvdG1wCnN1ZG8gbXYgL3RtcC9la3NjdGwgL3Vzci9sb2NhbC9iaW4KCgpla3NjdGwgY3JlYXRlIGNsdXN0ZXIgLS1uYW1lIGRlbW8tY2x1c3RlciAgXAotLXJlZ2lvbiB1cy1lYXN0LTIgXAotLW5vZGUtdHlwZSB0Mi5zbWFsbCBcCi0tbm9kZXMtbWluIDIgXAotLW5vZGVzLW1heCAyIFw="
+            IamInstanceProfile: "ec2-eks"
+            Tags: 
+              - 
+                Key: "Name"
+                Value: "eks-provisioner"
+            HibernationOptions: 
+                Configured: false
+            EnclaveOptions: 
+                Enabled: false
